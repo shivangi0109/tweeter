@@ -1,0 +1,33 @@
+form {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+form textarea {
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
+  border-bottom: 3px solid dimgray;
+  background-color: inherit;
+  margin-bottom: 20px;
+}
+
+form div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+form button {
+  font-weight: bolder;
+  text-transform: uppercase;
+  background-color: #4056A1;
+  color: azure;
+  border: none;
+  cursor: pointer;
+}
+
+form .counter {
+  font-weight: bolder;
+}
