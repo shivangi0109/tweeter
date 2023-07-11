@@ -75,4 +75,29 @@ $(document).ready(function() {
   }
 
   renderTweets(data);
+
+  const $form = $('form'); // Get the form element
+  
+  $form.submit(function(event) {
+    event.preventDefault(); // Prevent the default form submission behavior
+
+    // Your AJAX POST request goes here
+    const formData = $form.serialize(); // Serialize the form data which turns a set of form data into a query string.
+
+    // This serialized data should be sent to the server in the data field of the AJAX POST request
+    // Send the serialized data to the server
+    $.ajax({
+      url: '/tweets',
+      method: 'POST',
+      data: formData,
+      success: function(response) {
+        // Handle the successful response from the server
+        console.log('Tweet submitted successfully:', response);
+      },
+      error: function(error) {
+        // Handle the error response from the server
+        console.error('Error submitting tweet:', error);
+      }
+    });
+  });
 });
