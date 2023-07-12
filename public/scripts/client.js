@@ -15,8 +15,6 @@ $(document).ready(function() {
       });
   };
 
-  loadTweets(); // Load tweets on page load
-
   const renderTweets = function(tweets) {
     // Clear existing tweets container
     $('.tweets-container').empty();
@@ -25,8 +23,8 @@ $(document).ready(function() {
     for (let tweet of tweets) {
       // calls createTweetElement for each tweet
       const $tweet = createTweetElement(tweet);
-      // takes return value and appends it to the tweets container
-      $('.tweets-container').append($tweet); // Add the tweet to the tweets container
+      // $('.tweets-container').append($tweet); // Add the tweet to the tweets container
+      $('.tweets-container').prepend($tweet); // Prepend the tweet to show the most recent tweet first
     }
   }
 
@@ -62,6 +60,26 @@ $(document).ready(function() {
     return $tweet;
   }
 
+  const submitTweet = function(formData) {
+    // This serialized data should be sent to the server in the data field of the AJAX POST request
+    // Send the serialized data to the server
+    $.ajax({
+      url: '/tweets',
+      method: 'POST',
+      data: formData,
+      success: function(response) {
+        // Handle the successful response from the server
+        console.log('Tweet submitted successfully:', response);
+        loadTweets(); // Reload the tweets to include the newly submitted tweet, without refreshing the page
+        $textarea.val(''); // Clear the textarea after successful submission
+      },
+      error: function(error) {
+        // Handle the error response from the server
+        console.error('Error submitting tweet:', error);
+      }
+    });
+  };
+
   const $form = $('form'); // Get the form element
   
   $form.submit(function(event) {
@@ -82,21 +100,6 @@ $(document).ready(function() {
 
     const formData = $form.serialize(); // Serialize the form data which turns a set of form data into a query string.
 
-    // This serialized data should be sent to the server in the data field of the AJAX POST request
-    // Send the serialized data to the server
-    $.ajax({
-      url: '/tweets',
-      method: 'POST',
-      data: formData,
-      success: function(response) {
-        // Handle the successful response from the server
-        console.log('Tweet submitted successfully:', response);
-        $textarea.val(''); // Clear the textarea after successful submission
-      },
-      error: function(error) {
-        // Handle the error response from the server
-        console.error('Error submitting tweet:', error);
-      }
-    });
+    submitTweet(formData); // Call the submitTweet function to send the AJAX POST request
   });
 });
