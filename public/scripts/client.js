@@ -67,7 +67,19 @@ $(document).ready(function() {
   $form.submit(function(event) {
     event.preventDefault(); // Prevent the default form submission behavior
 
-    // Your AJAX POST request goes here
+    const $textarea = $(this).find('textarea');
+    const tweetContent = $textarea.val();
+
+    if (!tweetContent) {
+      alert('Tweet content is not present. Please enter your tweet.');
+      return;
+    }
+
+    if (tweetContent.length > 140) {
+      alert('Tweet content exceeds the maximum character limit of 140. Please shorten your tweet.');
+      return;
+    }
+
     const formData = $form.serialize(); // Serialize the form data which turns a set of form data into a query string.
 
     // This serialized data should be sent to the server in the data field of the AJAX POST request
@@ -79,6 +91,7 @@ $(document).ready(function() {
       success: function(response) {
         // Handle the successful response from the server
         console.log('Tweet submitted successfully:', response);
+        $textarea.val(''); // Clear the textarea after successful submission
       },
       error: function(error) {
         // Handle the error response from the server
