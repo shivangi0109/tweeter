@@ -30,6 +30,18 @@ $(document).ready(function() {
 
   // Function to create the HTML structure for a tweet
   function createTweetElement(tweet) {
+    // <p>${$("<div>").text(tweet.content.text)}</p> // Method1: Use .text() to safely render the tweet content
+    // By using .text(tweet.content.text).html(), we first escape the tweet content using .text() to ensure it's displayed as plain text. Then, we use .html() to convert it back to HTML format so that line breaks and other HTML entities are correctly rendered.
+    
+    // Method 2: escape function to avoid cross-scripting attacks on 
+    const escape = function (str) {
+      let div = document.createElement("div");
+      div.appendChild(document.createTextNode(str));
+      return div.innerHTML;
+    };
+
+    const safeContent = escape(tweet.content.text); // Escape the tweet content
+
     const $tweet = $(`
       <article class="tweet">
         <header>
@@ -42,7 +54,7 @@ $(document).ready(function() {
           </div>
         </header>
         <div>
-          <p>${tweet.content.text}</p>
+          <p>${safeContent}</p>
         </div>
         <footer>
           <div>
@@ -101,5 +113,7 @@ $(document).ready(function() {
     const formData = $form.serialize(); // Serialize the form data which turns a set of form data into a query string.
 
     submitTweet(formData); // Call the submitTweet function to send the AJAX POST request
+
+    $textarea.val(''); // Clear the textarea after successful submission
   });
 });
