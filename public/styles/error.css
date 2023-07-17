@@ -1,0 +1,10 @@
+.error-container {
+  color: #ff0000;
+  padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 30px;
+  border: 2px solid #ff0000;
+  height: 40px;
+  display: none;
+   /* Hide the error container by default */
+}

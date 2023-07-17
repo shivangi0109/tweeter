@@ -72,6 +72,18 @@ $(document).ready(function() {
     return $tweet;
   }
 
+  const $errorContainer = $('.error-container'); // Get the error container element
+  const $errorMessage = $('.error-message'); // Get the error message element
+
+  const showError = function(errorMessage) {
+    $errorMessage.text(errorMessage); // Set the error message in the error message
+    $errorContainer.slideDown(); // Show the error container with slide down animation
+  };
+
+  const hideError = function() {
+    $errorContainer.slideUp(); // Hide the error container with slide up animation
+  };
+
   const submitTweet = function(formData) {
     // This serialized data should be sent to the server in the data field of the AJAX POST request
     // Send the serialized data to the server
@@ -84,10 +96,12 @@ $(document).ready(function() {
         console.log('Tweet submitted successfully:', response);
         loadTweets(); // Reload the tweets to include the newly submitted tweet, without refreshing the page
         $textarea.val(''); // Clear the textarea after successful submission
+        hideError(); // Hide the error container upon successful submission
       },
       error: function(error) {
         // Handle the error response from the server
         console.error('Error submitting tweet:', error);
+        showError('Error submitting tweet.'); // Show the error message in the error container
       }
     });
   };
@@ -101,14 +115,16 @@ $(document).ready(function() {
     const tweetContent = $textarea.val();
 
     if (!tweetContent) {
-      alert('Tweet content is not present. Please enter your tweet.');
+      showError('Tweet content is not present. Please enter your tweet.');
       return;
     }
 
     if (tweetContent.length > 140) {
-      alert('Tweet content exceeds the maximum character limit of 140. Please shorten your tweet.');
+      showError('Tweet content exceeds the maximum character limit of 140. Please shorten your tweet.');
       return;
     }
+
+    hideError(); // Hide the error container before validation
 
     const formData = $form.serialize(); // Serialize the form data which turns a set of form data into a query string.
 
