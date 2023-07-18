@@ -43,37 +43,39 @@
         </div>
       </div>
     </nav>
-    <header>
-      <div>
-          <img src="/images/profile-hex.png">
-      </div>
-      <br>
-      <div>
-          <h2>Shivangi Srivastava</h2>
-      </div>
-    </header>
-    <!-- Page-specific (main) content here -->
-    <main class="container">
-      <section class="new-tweet">
-        <h2>Compose Tweet</h2>
-        <div class="error-container">
-          <i class="fa-sharp fa-solid fa-triangle-exclamation"></i>
-          <span class="error-message"></span>
-          <i class="fa-sharp fa-solid fa-triangle-exclamation"></i>
-        </div> <!-- Add the error container here -->
-        <form action="/tweets" method="POST">
-          <label for="tweet-text"></label>
-          <textarea name="text" id="tweet-text" placeholder="What are you humming about?"></textarea>
-          <div>
-            <button type="submit">Tweet</button>
-            <output id="tweet-counter" name="counter" class="counter" for="tweet-text">140</output>
-          </div>
-        </form>
-      </section>
-      <!-- New section for tweets container -->
-      <section class="tweets-container">
-        <!-- Tweets will be dynamically added here -->
-      </section>
-    </main>
+    <div class="header-main">
+      <header>
+        <div>
+            <img src="/images/profile-hex.png">
+        </div>
+        <br>
+        <div>
+            <h2>Shivangi Srivastava</h2>
+        </div>
+      </header>
+      <!-- Page-specific (main) content here -->
+      <main class="container">
+        <section class="new-tweet">
+          <h2>Compose Tweet</h2>
+          <div class="error-container">
+            <i class="fa-sharp fa-solid fa-triangle-exclamation"></i>
+            <span class="error-message"></span>
+            <i class="fa-sharp fa-solid fa-triangle-exclamation"></i>
+          </div> <!-- Add the error container here -->
+          <form action="/tweets" method="POST">
+            <label for="tweet-text"></label>
+            <textarea name="text" id="tweet-text" placeholder="What are you humming about?"></textarea>
+            <div>
+              <button type="submit">Tweet</button>
+              <output id="tweet-counter" name="counter" class="counter" for="tweet-text">140</output>
+            </div>
+          </form>
+        </section>
+        <!-- New section for tweets container -->
+        <section class="tweets-container">
+          <!-- Tweets will be dynamically added here -->
+        </section>
+      </main>
+    </div>
   </body>
 </html>
