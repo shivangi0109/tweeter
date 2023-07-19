@@ -6,7 +6,11 @@ This repository is the starter code for the project: Anyone can fork and clone t
 
 ## Final Product
 
-<!-- !["Screenshot of register page"](https://github.com/shivangi0109/tinyapp/blob/master/docs/register-page.png) -->
+!["Screenshot of tweeter main page"](https://github.com/shivangi0109/tweeter/blob/master/docs/tweeter-main-page.png)
+!["Screenshot of create new tweet"](https://github.com/shivangi0109/tweeter/blob/master/docs/create-new-tweet.png)
+!["Screenshot of tweets"](https://github.com/shivangi0109/tweeter/blob/master/docs/tweets.png)
+!["Screenshot of  Error1 - tweet content is not present"](https://github.com/shivangi0109/tweeter/blob/master/docs/tweet-not-presentr-error.png)
+!["Screenshot of Error2 - tweet content exceeds max character limit of 140"](https://github.com/shivangi0109/tweeter/blob/master/docs/tweet-length-error.png)
 
 ## Getting Started
 
