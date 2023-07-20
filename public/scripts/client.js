@@ -33,10 +33,8 @@ $(document).ready(function() {
 
   // Function to create the HTML structure for a tweet
   function createTweetElement(tweet) {
-    // <p>${$("<div>").text(tweet.content.text)}</p> // Method1: Use .text() to safely render the tweet content
-    // By using .text(tweet.content.text).html(), we first escape the tweet content using .text() to ensure it's displayed as plain text. Then, we use .html() to convert it back to HTML format so that line breaks and other HTML entities are correctly rendered.
     
-    // Method 2: escape function to avoid cross-scripting attacks on 
+    // escape function to avoid cross-scripting attacks
     const escape = function (str) {
       let div = document.createElement("div");
       div.appendChild(document.createTextNode(str));
@@ -96,7 +94,6 @@ $(document).ready(function() {
       data: formData,
       success: function(response) {
         // Handle the successful response from the server
-        console.log('Tweet submitted successfully:', response);
         loadTweets(); // Reload the tweets to include the newly submitted tweet, without refreshing the page
         $textarea.val(''); // Clear the textarea after successful submission
         hideError(); // Hide the error container upon successful submission
