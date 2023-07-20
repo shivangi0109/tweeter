@@ -15,6 +15,9 @@ $(document).ready(function() {
       });
   };
 
+  // Call loadTweets() when the page is loaded
+  loadTweets();
+
   const renderTweets = function(tweets) {
     // Clear existing tweets container
     $('.tweets-container').empty();
@@ -26,7 +29,7 @@ $(document).ready(function() {
       // $('.tweets-container').append($tweet); // Add the tweet to the tweets container
       $('.tweets-container').prepend($tweet); // Prepend the tweet to show the most recent tweet first
     }
-  }
+  };
 
   // Function to create the HTML structure for a tweet
   function createTweetElement(tweet) {
