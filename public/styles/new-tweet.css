@@ -5,9 +5,8 @@ form {
 }
 
 form textarea {
-  border-top: 0;
-  border-left: 0;
-  border-right: 0;
+  border: none;
+  outline: none;
   border-bottom: 3px solid dimgray;
   background-color: inherit;
   margin-bottom: 20px;
